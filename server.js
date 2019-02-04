@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 
+const port = process.env.PORT || 3000;
 let app = express();
 
 app.set("view engine", "ejs");
@@ -23,7 +24,7 @@ app.use((req, res, next) => {
 
 // app.use((req, res, next) => {
 //   res.render("maintenance.ejs");
-  
+
 // });
 
 app.use(express.static("./public"));
@@ -50,4 +51,6 @@ app.get("/about", (req, res) => {
   });
 });
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Server Is Up On ${port}`);
+});
